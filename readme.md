@@ -9,6 +9,8 @@ we show that for a few synthetic mathematical datasets, a multilayer percep-
 tron with linear learning rate tensor models converges to the minimum stable
 test loss more quickly and more reliably than standard SGD.
 
+Implementations of this optimization scheme for various model architectures can be found in models.py.
+
 ## LRT Optimization
 
 Let $W \in \mathbb{R}^{n \times m}$ be a model parameter. In the LRT framework, the parameter $W$ has an associated model $\Lambda_W$ with parameter matrix $W^\Lambda \in \mathbb{R}^{j \times k}$ that outputs a learning rate tensor $\lambda_W \in \mathbb{R}^{n \times m}$ with a shape identical to $W$.
