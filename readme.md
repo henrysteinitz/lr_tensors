@@ -1,7 +1,7 @@
 # Distributed Learning Rate Tensors
 
-We describe an alternative to training neural networks with sto-
-chastic gradient descent in which distributed learning rate signals are pointwise
+We describe an alternative to training neural networks with stochastic 
+gradient descent in which distributed learning rate signals are pointwise
 multiplied by gradient signals to compute update steps. Learning rate tensors
 are generated for each training example by learning rate tensors models that
 simultaneously learn to minimize training loss by standard SGD. In particular,
