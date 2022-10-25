@@ -5,8 +5,8 @@ from torch.nn.parameter import Parameter
 import torch.nn.functional as F
 
 
-
 class Perceptron(Module):
+
 	def __init__(self, input_size=2, output_size=2, init_scale=.3, init_lr=.3):
 		super().__init__()
 		self.W = Parameter(init_scale * torch.rand([output_size, input_size]))
@@ -20,6 +20,7 @@ class Perceptron(Module):
 
 
 class LRTPerceptron(Module):
+
 	def __init__(self, input_size=2, output_size=2, regression=True, meta_learning=True, init_scale=.3):
 		super().__init__()
 		self.W = Parameter(init_scale * torch.rand([output_size, input_size]))
@@ -80,8 +81,8 @@ class LRTPerceptron(Module):
 			self.b -= torch.mean(b_grad_full, dim=2)
 
 
-
 class LRTMultilayerPerceptron(Module):
+
 	def __init__(self, input_size=2, hidden_size=10, output_size=2, regression=True, meta_learning=True, init_scale=.1, lr=.0003):
 		super().__init__()
 		self.W1 = Parameter(init_scale * torch.rand([hidden_size, input_size]))
@@ -168,6 +169,7 @@ class LRTMultilayerPerceptron(Module):
 
 
 class LRTDeepMultilayerPerceptron(Module):
+
 	def __init__(self, 
 			input_size=2, 
 			hidden_size1=10,  
@@ -259,6 +261,7 @@ class LRTDeepMultilayerPerceptron(Module):
 		result = torch.matmul(W4_temp, result) + b4_temp
 		result = torch.nn.functional.relu(result)
 		result = torch.matmul(W5_temp, result) + b5_temp
+
 		if not self.regression:
 			result = nn.functional.sigmoid(result)
 		return result
@@ -351,6 +354,7 @@ class LRTDeepMultilayerPerceptron(Module):
 
 
 class HSLRTDeepMultilayerPerceptron(Module):
+
 	def __init__(self, 
 			input_size=2, 
 			hidden_size1=10,  
@@ -547,6 +551,7 @@ class HSLRTDeepMultilayerPerceptron(Module):
 
 
 class ResNetModule(nn.Module):
+
 	def __init__(self, channels, kernel_size=5):
 		super(ResNetModule, self).__init__()
 		if kernel_size % 2 == 0:
@@ -573,8 +578,10 @@ class ResNetModule(nn.Module):
 		x2 = F.relu(x2)
 		return x2
 
+
 # The channel expansion module also optionally includes an initial pooling operation.
 class ExpansionModule(nn.Module):
+
 	def __init__(self, in_channels, out_channels, pool=True, kernel_size=5, padding=None):
 		super(ExpansionModule, self).__init__()
 		if kernel_size % 2 == 0:
@@ -602,6 +609,7 @@ class ExpansionModule(nn.Module):
 
 
 class ResNet10(nn.Module):
+
 	def __init__(self, layer_depths=[1, 2, 2, 2], meta_learning=True, init_scale=.1, lr=.0003):
 		super().__init__()
 		channels = 32
