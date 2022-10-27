@@ -25,3 +25,20 @@ Then, the loss $l(M_{t+1}(x_t))$ is recomputed with $W_{t + 1}$ in place of $W_{
 
 $$W^\Lambda_{t+1} = W^\Lambda_{t} - \lambda' \nabla_{W^\Lambda_{t}}l(M_{t+1}(x_t))$$
 In contrast to typical metalearning models, both the LRT model $\Lambda_W$ and forward model $M$ are optimized simultaneously.
+
+## LRT Model Architecture
+
+If we want LRT optimization to adapt to the current set of training examples, our LRT models must accept network state as input. We propose two styles of LRTM architectures for deep sequential networks: input-driven models and state-driven models. The models differ in their relationship to activations in sequential models, but are agnostic to their internal architecture. This paper considers only affine LRT models.
+
+### Input-drive LRTMs
+
+![alt text](https://raw.githubusercontent.com/henrysteinitz/lr_tensors/main/input_driven_architecture.png)
+
+Let $W$ be a parameter in model $M$. Input driven learning rate tensor models $\lambda_W(x)$ are functions of the complete model input $x$
+
+
+### State-driven LRTMs
+
+![alt text](https://raw.githubusercontent.com/henrysteinitz/lr_tensors/main/state_driven_architecture.png)
+
+Let $W$ be a parameter in a submodule $M'$ of $M$. State-driven learning rate tensor models $\lambda_W(h)$ are functions of the submodule input $h$. In sequential models, this is the networks hidden-state or activation coming from the previous layer. 
