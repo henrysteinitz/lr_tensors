@@ -20,7 +20,7 @@ While unbiased stochastic error gradients are theoretically motivated and effici
 computable [1], they often diverge from the optimal update direction. For example,
 in deep fully-connected networks, gradient signals tend to vanish to 0 or diverge to
 infinity in early layers.[4] As a result, it is widely agreed that clipping gradient signals at
-a maximum value improves learning. This suggests that, more generally, tailoring our optimizatation algorithm to each model parameter may improve learning rate and overall convergance.
+a maximum value increases the liklihood of SGD convergence. This suggests that, more generally, tailoring our optimizatation algorithm to each model parameter may improve learning.
 
 This work is closely related to recent developments in meta-learning. Bengio et
 al. (1992) proposes meta-learning of local update functions without references to
