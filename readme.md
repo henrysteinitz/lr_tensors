@@ -13,12 +13,8 @@ Implementations of this optimization scheme for various model architectures can 
 
 ## Motivation
 
-Most state-of-the-art machine learning systems are almost-everywhere dif-
-ferentiable functions with parameters trained by gradient optimization techniques
-such as stochastic gradient descent (SGD) or SGD with momentum. These gradi-
-ent methods typically have 1 or several constant scalar hyperparameters such as
-a learning rate λ that dictate their optimization dynamics. The internal state of
-these optimizers are typically characterized by at most a handful of scalar variables.
+Most state-of-the-art machine learning systems are almost-everywhere differentiable functions with parameters trained by gradient optimization techniques such as stochastic gradient descent 
+(SGD) or SGD with momentum. These gradient methods typically have 1 or several constant scalar hyperparameters such as a learning rate λ that dictate their optimization dynamics. The internal state of these optimizers are typically characterized by at most a handful of scalar variables.
 
 While unbiased stochastic error gradients are theoretically motivated and efficiently
 computable [1], they often diverge from the optimal update direction. For example,
